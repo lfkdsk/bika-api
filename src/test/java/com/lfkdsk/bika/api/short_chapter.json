@@ -1,0 +1,28 @@
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "eps": {
+      "docs": [
+        {
+          "_id": "5d9c6ca7ba83807016b8bed6",
+          "title": "汉化",
+          "order": 2,
+          "updated_at": "2019-10-07T17:13:58.680Z",
+          "id": "5d9c6ca7ba83807016b8bed6"
+        },
+        {
+          "_id": "5d6141ab4b4df031401d203c",
+          "title": "第1話",
+          "order": 1,
+          "updated_at": "2019-08-23T20:06:05.872Z",
+          "id": "5d6141ab4b4df031401d203c"
+        }
+      ],
+      "total": 2,
+      "limit": 40,
+      "page": 1,
+      "pages": 1
+    }
+  }
+}

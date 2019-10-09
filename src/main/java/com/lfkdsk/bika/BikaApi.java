@@ -19,9 +19,7 @@ import com.lfkdsk.bika.api.BaseRetrofitManager;
 import com.lfkdsk.bika.api.BiKaApiService;
 import com.lfkdsk.bika.api.RestWakaClient;
 import com.lfkdsk.bika.request.SignInBody;
-import com.lfkdsk.bika.response.GeneralResponse;
-import com.lfkdsk.bika.response.SignInResponse;
-import com.lfkdsk.bika.response.WakaInitResponse;
+import com.lfkdsk.bika.response.*;
 import com.lfkdsk.bika.utils.BikaJni;
 import com.lfkdsk.bika.utils.HttpDns;
 import okhttp3.Interceptor;
@@ -36,6 +34,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
     private String TAG = "BikaApi";
@@ -47,6 +46,9 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
     private String uuid = "07c3d76a-128e-3fe7-bc99-f6db60713e72";
     private String version = "2.2.0.0.1.1";
     private int channel = 2;
+    private String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODZkMTQ5MWU2MzU4OTJhM2VkOThlMTUiLCJlbWFpbCI6Imxma2RzayIsInJvbGUiOiJtZW1iZXIiLCJuYW1lIjoiaGFoYWhhZHNrIiwidmVyc2lvbiI6IjIuMi4wLjAuMS4xIiwiYnVpbGRWZXJzaW9uIjoiNDIiLCJwbGF0Zm9ybSI6ImFuZHJvaWQiLCJpYXQiOjE1NzA2MjEwNzUsImV4cCI6MTU3MTIyNTg3NX0.XAR7lU-I72pdvF-req973-_vVUhzRBUeR1aPyFx4EmU";
+    private String imageServer = "https://s3.picacomic.com/static/";
+    private OkHttpClient client;
 
     public void initClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -69,6 +71,7 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
                                 .header("accept", "application/vnd.picacomic.com.v1+json")
                                 .header("app-channel", "2")
                                 .header("time", time)
+                                .header("authorization", token)
                                 .header("nonce", uid)
                                 .header("signature", signature)
                                 .header("app-version", version)
@@ -98,6 +101,7 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
 
 
         this.setApi(api);
+        this.client = builder.build();
     }
 
     public List<String> dns() throws IOException {
@@ -121,7 +125,63 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
         if (data == null) {
             return null;
         }
-        return data.getToken();
+        return token = data.getToken();
+    }
+
+    public List<Category> categories() throws IOException {
+        retrofit2.Response<GeneralResponse<CategoryResponse>> res = BikaApi.getInstance().getApi().getCategories(token).execute();
+        if (res.body() == null) {
+            return null;
+        }
+
+        GeneralResponse<CategoryResponse> body = res.body();
+        CategoryResponse data = body.data;
+        if (data == null || data.categories == null) {
+            return null;
+        }
+
+        return data.categories.stream()
+                .filter(category -> category.getActive() || category.getCategoryId() != null)
+                .collect(Collectors.toList());
+    }
+
+    public ComicPage page(String category, int page) throws IOException {
+        retrofit2.Response<GeneralResponse<ComicListResponse>> res =
+                getInstance().getApi().getComicList(token, page, category, null, null, null, "ua", null, null).execute();
+        if (res.body() == null) {
+            return null;
+        }
+
+        GeneralResponse<ComicListResponse> body = res.body();
+        ComicListResponse data = body.data;
+        if (data == null || data.getComics() == null) {
+            return null;
+        }
+
+        return data.getComics();
+    }
+
+    public String initImage(String token) throws IOException {
+        retrofit2.Response<GeneralResponse<InitialResponse>> res = getInstance().getApi().getInit(token).execute();
+        if (res.body() == null) {
+            return null;
+        }
+
+        GeneralResponse<InitialResponse> body = res.body();
+        InitialResponse data = body.data;
+        if (data == null) {
+            return null;
+        }
+
+        return imageServer = data.imageServer;
+    }
+
+    public Request pageRequest(String categoryName, int page) {
+        return getInstance().getApi().getComicList(token, page, categoryName, null, null, null, "ua", null, null).request();
+    }
+
+    public Request chapterRequest(String comicId, int page) {
+        return getApi().getComicEpisode(token, comicId, page).request();
     }
 
     public static final class INSTANCE {
@@ -133,5 +193,25 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
 
     public static BikaApi getInstance() {
         return INSTANCE.instance;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public String getImageServer() {
+        return imageServer;
+    }
+
+    public void setImageServer(String imageServer) {
+        this.imageServer = imageServer;
+    }
+
+    public OkHttpClient getClient() {
+        return client;
     }
 }

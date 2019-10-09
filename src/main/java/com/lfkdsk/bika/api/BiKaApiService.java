@@ -18,10 +18,7 @@ package com.lfkdsk.bika.api;/*
 import com.lfkdsk.bika.request.SignInBody;
 import com.lfkdsk.bika.response.*;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.POST;
+import retrofit2.http.*;
 
 public interface BiKaApiService {
     @GET("init")
@@ -35,4 +32,13 @@ public interface BiKaApiService {
 
     @GET("categories")
     Call<GeneralResponse<CategoryResponse>> getCategories(@Header("authorization") String str);
+
+    @GET("comics")
+    Call<GeneralResponse<ComicListResponse>> getComicList(@Header("authorization") String authorization, @Query("page") int page, @Query("c") String c, @Query("t") String t, @Query("a") String a, @Query("f") String f, @Query("s") String s, @Query("ct") String ct, @Query("ca") String ca);
+
+    @GET("comics/{comicId}")
+    Call<GeneralResponse<ComicDetailResponse>> getComicWithId(@Header("authorization") String str, @Path("comicId") String str2);
+
+    @GET("comics/{comicId}/eps")
+    Call<GeneralResponse<ComicEpisodeResponse>> getComicEpisode(@Header("authorization") String str, @Path("comicId") String str2, @Query("page") int i);
 }

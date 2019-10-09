@@ -5,17 +5,17 @@ package com.lfkdsk.bika.response;
 import java.util.List;
 
 public class CategoryResponse {
-    public List<CategoryObject> categories;
+    public List<Category> categories;
 
-    public CategoryResponse(List<CategoryObject> categories) {
+    public CategoryResponse(List<Category> categories) {
         this.categories = categories;
     }
 
-    public List<CategoryObject> getCategories() {
+    public List<Category> getCategories() {
         return this.categories;
     }
 
-    public void setCategories(List<CategoryObject> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 

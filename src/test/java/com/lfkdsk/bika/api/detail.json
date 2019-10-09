@@ -1,0 +1,68 @@
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "comic": {
+      "_id": "5d6141ab4b4df031401d203b",
+      "_creator": {
+        "_id": "593019d53f532059f297efa7",
+        "gender": "m",
+        "name": "黎欧",
+        "slogan": "emmm。。。二八七六八七八三九二（QQ代传邮箱）",
+        "title": "萌新",
+        "verified": false,
+        "exp": 640507,
+        "level": 80,
+        "characters": [
+          "knight"
+        ],
+        "role": "knight",
+        "avatar": {
+          "fileServer": "https://storage1.picacomic.com",
+          "path": "bf30b2bc-5127-4144-86f0-b496b102c6d3.jpg",
+          "originalName": "avatar.jpg"
+        },
+        "character": "https://www.picacomic.com/characters/frame_knight_top.png?r=3"
+      },
+      "title": "(C96)  リゾートまでの途上でカーセックスですよ!? (Fate/Grand Order)",
+      "description": "XX真可爱",
+      "thumb": {
+        "fileServer": "https://storage1.picacomic.com",
+        "path": "tobeimg/VEJAknd5jPnLcXiof6CWSuKoxa1aOeXBiGp2p62AS2Y/fill/300/400/sm/0/aHR0cHM6Ly9zdG9yYWdlMS5waWNhY29taWMuY29tL3N0YXRpYy9lNTliNDIzNy1hMmUzLTQwYjYtOTNkMy00MTNlNWY3NmM1OTYuanBn.jpg",
+        "originalName": "Fgo327_.jpg"
+      },
+      "author": "Flicker10 (くろニャン)",
+      "chineseTeam": "黑锅汉化组",
+      "categories": [
+        "短篇",
+        "同人",
+        "純愛",
+        "Fate"
+      ],
+      "tags": [
+        "Fate / Grand Order",
+        "巨乳",
+        "口交",
+        "C96",
+        "純愛",
+        "泳裝",
+        "御姐",
+        "劇情",
+        "搞笑",
+        "吞精"
+      ],
+      "pagesCount": 53,
+      "epsCount": 2,
+      "finished": true,
+      "updated_at": "2019-10-08T11:01:59.237Z",
+      "created_at": "2019-08-23T20:03:08.733Z",
+      "allowDownload": true,
+      "allowComment": true,
+      "viewsCount": 13750,
+      "likesCount": 90,
+      "isFavourite": false,
+      "isLiked": false,
+      "commentsCount": 62
+    }
+  }
+}
