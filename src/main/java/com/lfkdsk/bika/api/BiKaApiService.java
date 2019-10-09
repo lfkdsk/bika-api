@@ -41,4 +41,7 @@ public interface BiKaApiService {
 
     @GET("comics/{comicId}/eps")
     Call<GeneralResponse<ComicEpisodeResponse>> getComicEpisode(@Header("authorization") String str, @Path("comicId") String str2, @Query("page") int i);
+
+    @GET("comics/{comicId}/order/{order}/pages")
+    Call<GeneralResponse<ComicPagesResponse>> getPagesWithOrder(@Header("authorization") String str, @Path("comicId") String str2, @Path("order") int i, @Query("page") int i2);
 }
