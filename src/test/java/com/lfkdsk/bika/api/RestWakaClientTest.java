@@ -87,8 +87,8 @@ public class RestWakaClientTest {
 //        System.out.println(response.body().addresses);
 
         BikaApi.getInstance().initClient();
-        Response<GeneralResponse<InitialResponse>> res0 = BikaApi.getInstance().getApi().getInit(BikaApi.getInstance().getToken()).execute();
-        System.out.println(res0);
+//        Response<GeneralResponse<InitialResponse>> res0 = BikaApi.getInstance().getApi().getInit(BikaApi.getInstance().getToken()).execute();
+//        System.out.println(res0);
 
         Response<GeneralResponse<ComicListResponse>> res = BikaApi.getInstance().getApi().getComicList(
                 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODZkMTQ5MWU2MzU4OTJhM2VkOThlMTUiLCJlbWFpbCI6Imxma2RzayIsInJvbGUiOiJtZW1iZXIiLCJuYW1lIjoiaGFoYWhhZHNrIiwidmVyc2lvbiI6IjIuMi4wLjAuMS4xIiwiYnVpbGRWZXJzaW9uIjoiNDIiLCJwbGF0Zm9ybSI6ImFuZHJvaWQiLCJpYXQiOjE1NzA2MjEwNzUsImV4cCI6MTU3MTIyNTg3NX0.XAR7lU-I72pdvF-req973-_vVUhzRBUeR1aPyFx4EmU",

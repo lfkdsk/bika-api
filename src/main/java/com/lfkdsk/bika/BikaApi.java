@@ -22,7 +22,6 @@ import com.lfkdsk.bika.request.SignInBody;
 import com.lfkdsk.bika.response.*;
 import com.lfkdsk.bika.utils.BikaJni;
 import com.lfkdsk.bika.utils.HttpDns;
-
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -31,7 +30,10 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -77,7 +79,7 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
                                 .header("signature", signature)
                                 .header("app-version", version)
                                 .header("app-uuid", uuid)
-                                .header("image-quality", "original")//哔咔服务器加载图片质量
+                                .header("image-quality", "original") // 哔咔服务器加载图片质量
                                 .header("app-platform", "android")
                                 .header("app-build-version", buildVersion)
                                 .header("user-agent", "okhttp/3.8.1")
@@ -202,6 +204,14 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
 
     public Request searchRequest(String query, int page) {
         return getApi().getComicListWithSearchKey(token, page, query).request();
+    }
+
+    public Request detailRequest(String comicId) {
+        return getApi().getComicWithId(token, comicId).request();
+    }
+
+    public Request graphRequest(String id, int order) {
+        return getApi().getPagesWithOrder(token, id, order, 1).request();
     }
 
     public static final class INSTANCE {
