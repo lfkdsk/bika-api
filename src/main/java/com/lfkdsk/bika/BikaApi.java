@@ -53,8 +53,8 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
 
     public void initClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(5, TimeUnit.SECONDS)
-                .readTimeout(5, TimeUnit.SECONDS);
+        builder.connectTimeout(50, TimeUnit.SECONDS)
+                .readTimeout(50, TimeUnit.SECONDS);
         builder.dns(new HttpDns());
         builder.addInterceptor(new Interceptor() {
             @Override
@@ -198,6 +198,10 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
 
     public Request chapterRequest(String comicId, int page) {
         return getApi().getComicEpisode(token, comicId, page).request();
+    }
+
+    public Request searchRequest(String query, int page) {
+        return getApi().getComicListWithSearchKey(token, page, query).request();
     }
 
     public static final class INSTANCE {

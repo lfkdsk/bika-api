@@ -92,7 +92,44 @@ public class RestWakaClientTest {
 
         Response<GeneralResponse<ComicListResponse>> res = BikaApi.getInstance().getApi().getComicList(
                 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODZkMTQ5MWU2MzU4OTJhM2VkOThlMTUiLCJlbWFpbCI6Imxma2RzayIsInJvbGUiOiJtZW1iZXIiLCJuYW1lIjoiaGFoYWhhZHNrIiwidmVyc2lvbiI6IjIuMi4wLjAuMS4xIiwiYnVpbGRWZXJzaW9uIjoiNDIiLCJwbGF0Zm9ybSI6ImFuZHJvaWQiLCJpYXQiOjE1NzA2MjEwNzUsImV4cCI6MTU3MTIyNTg3NX0.XAR7lU-I72pdvF-req973-_vVUhzRBUeR1aPyFx4EmU",
-                1, "嗶咔漢化", null, null, null, "ua", null, null ).execute();
+                1, "嗶咔漢化", null, null, null, "ua", null, null).execute();
+        System.out.println(res);
+    }
+
+    @Test
+    public void testGetCat() throws IOException {
+        BikaApi.getInstance().initClient();
+        Response<GeneralResponse<CategoryResponse>> res = BikaApi.getInstance().getApi().getCategories(
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODZkMTQ5MWU2MzU4OTJhM2VkOThlMTUiLCJlbWFpbCI6Imxma2RzayIsInJvbGUiOiJtZW1iZXIiLCJuYW1lIjoiaGFoYWhhZHNrIiwidmVyc2lvbiI6IjIuMi4wLjAuMS4xIiwiYnVpbGRWZXJzaW9uIjoiNDIiLCJwbGF0Zm9ybSI6ImFuZHJvaWQiLCJpYXQiOjE1NzA2MjEwNzUsImV4cCI6MTU3MTIyNTg3NX0.XAR7lU-I72pdvF-req973-_vVUhzRBUeR1aPyFx4EmU"
+        ).execute();
+        System.out.println(res);
+    }
+
+    @Test
+    public void testSearch() throws IOException {
+//        Response<WakaInitResponse> response = new RestWakaClient().getApiService().getWakaInit().execute();
+//        assert response.body() != null;
+//        System.out.println(response.body().addresses);
+
+        BikaApi.getInstance().initClient();
+//        Response<GeneralResponse<InitialResponse>> res0 = BikaApi.getInstance().getApi().getInit(BikaApi.getInstance().getToken()).execute();
+//        System.out.println(res0);
+
+        Response<GeneralResponse<ComicListResponse>> res = BikaApi.getInstance().getApi().getComicListWithSearchKey(
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODZkMTQ5MWU2MzU4OTJhM2VkOThlMTUiLCJlbWFpbCI6Imxma2RzayIsInJvbGUiOiJtZW1iZXIiLCJuYW1lIjoiaGFoYWhhZHNrIiwidmVyc2lvbiI6IjIuMi4wLjAuMS4xIiwiYnVpbGRWZXJzaW9uIjoiNDIiLCJwbGF0Zm9ybSI6ImFuZHJvaWQiLCJpYXQiOjE1NzA2MjEwNzUsImV4cCI6MTU3MTIyNTg3NX0.XAR7lU-I72pdvF-req973-_vVUhzRBUeR1aPyFx4EmU",
+                1, "lovelive").execute();
+        System.out.println(res);
+    }
+
+    @Test
+    public void testTags() throws IOException {
+        BikaApi.getInstance().initClient();
+//        Response<GeneralResponse<InitialResponse>> res0 = BikaApi.getInstance().getApi().getInit(BikaApi.getInstance().getToken()).execute();
+//        System.out.println(res0);
+
+        Response<GeneralResponse<TagListResponse>> res = BikaApi.getInstance().getApi().getTags(
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ODZkMTQ5MWU2MzU4OTJhM2VkOThlMTUiLCJlbWFpbCI6Imxma2RzayIsInJvbGUiOiJtZW1iZXIiLCJuYW1lIjoiaGFoYWhhZHNrIiwidmVyc2lvbiI6IjIuMi4wLjAuMS4xIiwiYnVpbGRWZXJzaW9uIjoiNDIiLCJwbGF0Zm9ybSI6ImFuZHJvaWQiLCJpYXQiOjE1NzA2MjEwNzUsImV4cCI6MTU3MTIyNTg3NX0.XAR7lU-I72pdvF-req973-_vVUhzRBUeR1aPyFx4EmU"
+                ).execute();
         System.out.println(res);
     }
 }
