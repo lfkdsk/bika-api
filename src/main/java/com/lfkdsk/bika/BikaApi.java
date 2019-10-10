@@ -22,6 +22,7 @@ import com.lfkdsk.bika.request.SignInBody;
 import com.lfkdsk.bika.response.*;
 import com.lfkdsk.bika.utils.BikaJni;
 import com.lfkdsk.bika.utils.HttpDns;
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,13 +31,13 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
+    public static List<String> dns = Arrays.asList("104.20.180.50", "104.20.181.50");
+
     private String TAG = "BikaApi";
     //-------------------    bika   API  --------------------------;
     private String API_KEY = "C69BAF41DA5ABD1FFEDC6D2FEA56B";
@@ -107,7 +108,7 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
     public List<String> dns() throws IOException {
         retrofit2.Response<WakaInitResponse> res = new RestWakaClient().getApiService().getWakaInit().execute();
         if (res.body() != null) {
-            return res.body().addresses;
+            return dns = res.body().addresses;
         }
 
         return Collections.emptyList();
@@ -174,6 +175,21 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
         }
 
         return imageServer = data.imageServer;
+    }
+
+    public ComicEpisodeData eps(String comicId, int page) throws IOException {
+        retrofit2.Response<GeneralResponse<ComicEpisodeResponse>> res = getInstance().getApi().getComicEpisode(token, comicId, page).execute();
+        if (res.body() == null) {
+            return null;
+        }
+
+        GeneralResponse<ComicEpisodeResponse> body = res.body();
+        ComicEpisodeResponse data = body.data;
+        if (data == null) {
+            return null;
+        }
+
+        return data.getEps();
     }
 
     public Request pageRequest(String categoryName, int page) {

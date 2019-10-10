@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComicEpisodeData {
-    List<ComicEpisodeObject> docs;
+    List<ComicEpisode> docs;
     int limit;
     int page;
     int pages;
     int total;
 
-    public ComicEpisodeData(List<ComicEpisodeObject> docs, int total, int limit, int page, int pages) {
+    public ComicEpisodeData(List<ComicEpisode> docs, int total, int limit, int page, int pages) {
         this.docs = docs;
         this.total = total;
         this.limit = limit;
@@ -20,11 +20,11 @@ public class ComicEpisodeData {
         this.pages = pages;
     }
 
-    public List<ComicEpisodeObject> getDocs() {
+    public List<ComicEpisode> getDocs() {
         return this.docs;
     }
 
-    public void setDocs(ArrayList<ComicEpisodeObject> docs) {
+    public void setDocs(ArrayList<ComicEpisode> docs) {
         this.docs = docs;
     }
 

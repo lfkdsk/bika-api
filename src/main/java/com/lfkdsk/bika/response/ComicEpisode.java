@@ -2,7 +2,7 @@ package com.lfkdsk.bika.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ComicEpisodeObject {
+public class ComicEpisode {
     @SerializedName("_id")
     String episodeId;
     int order;
@@ -12,7 +12,7 @@ public class ComicEpisodeObject {
     @SerializedName("updated_at")
     String updatedAt;
 
-    public ComicEpisodeObject(String episodeId, String title, int order, String updatedAt) {
+    public ComicEpisode(String episodeId, String title, int order, String updatedAt) {
         this.episodeId = episodeId;
         this.title = title;
         this.order = order;

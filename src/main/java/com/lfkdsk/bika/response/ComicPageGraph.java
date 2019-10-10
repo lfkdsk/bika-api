@@ -2,12 +2,12 @@ package com.lfkdsk.bika.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ComicPageObject {
+public class ComicPageGraph {
     @SerializedName("_id")
     String comicPageId;
     ThumbnailObject media;
 
-    public ComicPageObject(String comicPageId, ThumbnailObject media) {
+    public ComicPageGraph(String comicPageId, ThumbnailObject media) {
         this.comicPageId = comicPageId;
         this.media = media;
     }

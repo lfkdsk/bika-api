@@ -1,0 +1,171 @@
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "pages": {
+      "docs": [
+        {
+          "_id": "5d9e68acba83807016b8c795",
+          "media": {
+            "originalName": "01_hyo.jpg",
+            "path": "39c3d9b9-a70f-4871-9400-99e8d966a1d9.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c795"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c796",
+          "media": {
+            "originalName": "04.jpg",
+            "path": "1cf88bd3-f46e-4537-ae06-d219f62bdb31.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c796"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c797",
+          "media": {
+            "originalName": "05.jpg",
+            "path": "ebadf101-bf97-41e4-a075-d17efc7231b9.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c797"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c798",
+          "media": {
+            "originalName": "06.jpg",
+            "path": "6600c6e3-35c9-4bd0-a875-ccc5f3540f59.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c798"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c799",
+          "media": {
+            "originalName": "07.jpg",
+            "path": "2b7a72ec-1bda-4a1d-a536-d7f10925ff23.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c799"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c79a",
+          "media": {
+            "originalName": "08.jpg",
+            "path": "21128c5e-907f-4e37-a5fe-38c61d6b8bc5.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c79a"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c79b",
+          "media": {
+            "originalName": "09.jpg",
+            "path": "d98b9a3c-11c8-4842-8da5-537a8ea68663.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c79b"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c79c",
+          "media": {
+            "originalName": "10.jpg",
+            "path": "3e436e11-0ce7-4a4e-a32d-bb6afb0c204b.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c79c"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c79d",
+          "media": {
+            "originalName": "11.jpg",
+            "path": "23e320e5-b9ad-48c9-b4d7-665a42e7f105.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c79d"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c79e",
+          "media": {
+            "originalName": "12.jpg",
+            "path": "c6547c94-f691-4226-bfb7-67b14b5f8934.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c79e"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c79f",
+          "media": {
+            "originalName": "13.jpg",
+            "path": "fbb7d57a-b66a-43bd-a0e1-2fdbee6cfb9e.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c79f"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c7a0",
+          "media": {
+            "originalName": "14.jpg",
+            "path": "baa51a0e-3ef6-4262-9244-1bd3a4028dbc.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c7a0"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c7a1",
+          "media": {
+            "originalName": "15.jpg",
+            "path": "4bac4686-42bc-4ea4-a83a-aad13c3e84a8.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c7a1"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c7a2",
+          "media": {
+            "originalName": "16.jpg",
+            "path": "b8fd95d0-91da-4876-99ed-71b8fd0246ca.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c7a2"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c7a3",
+          "media": {
+            "originalName": "17.jpg",
+            "path": "927386be-4670-4466-be04-5ecdfc9ef8ca.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c7a3"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c7a4",
+          "media": {
+            "originalName": "18.jpg",
+            "path": "b9a63320-a09d-4cf7-b862-b531c3f83ff5.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c7a4"
+        },
+        {
+          "_id": "5d9e68acba83807016b8c7a5",
+          "media": {
+            "originalName": "19_staff.jpg",
+            "path": "75b1ab00-5e7c-488d-a5fd-f3f840fac849.jpg",
+            "fileServer": "https:\/\/storage1.picacomic.com"
+          },
+          "id": "5d9e68acba83807016b8c7a5"
+        }
+      ],
+      "total": 17,
+      "limit": 40,
+      "page": 1,
+      "pages": 1
+    },
+    "ep": {
+      "_id": "5d9e68abba83807016b8c794",
+      "title": "第1話"
+    }
+  }
+}

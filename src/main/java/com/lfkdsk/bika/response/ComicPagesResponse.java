@@ -2,10 +2,10 @@ package com.lfkdsk.bika.response;
 
 
 public class ComicPagesResponse {
-    ComicEpisodeObject ep;
+    ComicEpisode ep;
     ComicPageData pages;
 
-    public ComicPagesResponse(ComicPageData pages, ComicEpisodeObject ep) {
+    public ComicPagesResponse(ComicPageData pages, ComicEpisode ep) {
         this.pages = pages;
         this.ep = ep;
     }
@@ -18,11 +18,11 @@ public class ComicPagesResponse {
         this.pages = pages;
     }
 
-    public ComicEpisodeObject getEp() {
+    public ComicEpisode getEp() {
         return this.ep;
     }
 
-    public void setEp(ComicEpisodeObject ep) {
+    public void setEp(ComicEpisode ep) {
         this.ep = ep;
     }
 

@@ -3,15 +3,16 @@ package com.lfkdsk.bika.response;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ComicPageData {
-    ArrayList<ComicPageObject> docs;
+    List<ComicPageGraph> docs;
     int limit;
     int page;
     int pages;
     int total;
 
-    public ComicPageData(int total, int limit, int page, int pages, ArrayList<ComicPageObject> docs) {
+    public ComicPageData(int total, int limit, int page, int pages, ArrayList<ComicPageGraph> docs) {
         this.total = total;
         this.limit = limit;
         this.page = page;
@@ -51,11 +52,11 @@ public class ComicPageData {
         this.pages = pages;
     }
 
-    public ArrayList<ComicPageObject> getDocs() {
+    public List<ComicPageGraph> getDocs() {
         return this.docs;
     }
 
-    public void setDocs(ArrayList<ComicPageObject> docs) {
+    public void setDocs(ArrayList<ComicPageGraph> docs) {
         this.docs = docs;
     }
 
