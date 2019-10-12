@@ -194,8 +194,8 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
         return data.getEps();
     }
 
-    public ComicPageData pages(String id, int order) throws IOException {
-        retrofit2.Response<GeneralResponse<ComicPagesResponse>> res = getInstance().getApi().getPagesWithOrder(token, id, order, 1).execute();
+    public ComicPageData pages(String id, int order, int page) throws IOException {
+        retrofit2.Response<GeneralResponse<ComicPagesResponse>> res = getInstance().getApi().getPagesWithOrder(token, id, order, page).execute();
         if (res.body() == null) {
             return null;
         }

@@ -132,4 +132,11 @@ public class RestWakaClientTest {
                 ).execute();
         System.out.println(res);
     }
+
+    @Test
+    public void testLoadPages() throws IOException {
+        BikaApi.getInstance().initClient();
+        BikaApi.getInstance().pages("5d95b0fdacbfe77029cb0aac", 1, 1);
+        BikaApi.getInstance().pages("5d95b0fdacbfe77029cb0aac", 1, 2);
+    }
 }
