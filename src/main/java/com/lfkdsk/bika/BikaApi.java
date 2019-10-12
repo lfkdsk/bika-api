@@ -54,56 +54,55 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
     private String imageServer = "https://s3.picacomic.com/static/";
     private OkHttpClient client;
 
+    public class BiKaIntercept implements Interceptor {
+        @Override
+        public Response intercept(Chain chain) throws IOException {
+            Request original = chain.request();
+            String uid = UUID.randomUUID().toString().replace("-", "");
+            String url = original.url().toString().replace(BASE_URL_PIKA, "");
+            String time = String.valueOf(System.currentTimeMillis() / 1000);
+
+            String[] params = {BASE_URL_PIKA, url, time, uid, original.method(), API_KEY, version, buildVersion};
+            String signature = BikaJni.INSTANCE.getStringCon(params);
+            Response response = chain.proceed(
+                    original.newBuilder()
+                            .header("api-key", API_KEY)
+                            .header("accept", "application/vnd.picacomic.com.v1+json")
+                            .header("app-channel", "2")
+                            .header("time", time)
+                            .header("authorization", token)
+                            .header("nonce", uid)
+                            .header("signature", signature)
+                            .header("app-version", version)
+                            .header("app-uuid", uuid)
+                            .header("image-quality", "original") // 哔咔服务器加载图片质量
+                            .header("app-platform", "android")
+                            .header("app-build-version", buildVersion)
+                            .header("user-agent", "okhttp/3.8.1")
+                            .method(original.method(), original.body())
+                            .build()
+            );
+
+            String serverTime = response.headers().get("Server-Time");
+            if (serverTime != null) {
+//                    String diffTime = java.lang.Long.parseLong(serverTime) - System.currentTimeMillis() / 1000;
+//                    PreferenceHelper.setTimeDifference(context, diffTime)
+            }
+            return response;
+        }
+    }
+
     public void initClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(50, TimeUnit.SECONDS)
                 .readTimeout(50, TimeUnit.SECONDS);
         builder.dns(new HttpDns());
-        builder.addInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request original = chain.request();
-                String uid = UUID.randomUUID().toString().replace("-", "");
-                String url = original.url().toString().replace(BASE_URL_PIKA, "");
-                String time = String.valueOf(System.currentTimeMillis() / 1000);
-
-                String[] params = {BASE_URL_PIKA, url, time, uid, original.method(), API_KEY, version, buildVersion};
-                String signature = BikaJni.INSTANCE.getStringCon(params);
-                Response response = chain.proceed(
-                        original.newBuilder()
-                                .header("api-key", API_KEY)
-                                .header("accept", "application/vnd.picacomic.com.v1+json")
-                                .header("app-channel", "2")
-                                .header("time", time)
-                                .header("authorization", token)
-                                .header("nonce", uid)
-                                .header("signature", signature)
-                                .header("app-version", version)
-                                .header("app-uuid", uuid)
-                                .header("image-quality", "original") // 哔咔服务器加载图片质量
-                                .header("app-platform", "android")
-                                .header("app-build-version", buildVersion)
-                                .header("user-agent", "okhttp/3.8.1")
-                                .method(original.method(), original.body())
-                                .build()
-                );
-
-                String serverTime = response.headers().get("Server-Time");
-                if (serverTime != null) {
-//                    String diffTime = java.lang.Long.parseLong(serverTime) - System.currentTimeMillis() / 1000;
-//                    PreferenceHelper.setTimeDifference(context, diffTime)
-                }
-                return response;
-            }
-        });
-
+        builder.addInterceptor(new BiKaIntercept());
         BiKaApiService api = new Retrofit.Builder()
                 .baseUrl(BASE_URL_PIKA)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(builder.build()).build()
                 .create(BiKaApiService.class);
-
-
         this.setApi(api);
         this.client = builder.build();
     }
