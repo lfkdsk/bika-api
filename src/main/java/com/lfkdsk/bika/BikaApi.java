@@ -22,6 +22,7 @@ import com.lfkdsk.bika.request.SignInBody;
 import com.lfkdsk.bika.response.*;
 import com.lfkdsk.bika.utils.BikaJni;
 import com.lfkdsk.bika.utils.HttpDns;
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -192,6 +193,21 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
         }
 
         return data.getEps();
+    }
+
+    public ComicPageData pages(String id, int order) throws IOException {
+        retrofit2.Response<GeneralResponse<ComicPagesResponse>> res = getInstance().getApi().getPagesWithOrder(token, id, order, 1).execute();
+        if (res.body() == null) {
+            return null;
+        }
+
+        GeneralResponse<ComicPagesResponse> body = res.body();
+        ComicPagesResponse data = body.data;
+        if (data == null) {
+            return null;
+        }
+
+        return data.getPages();
     }
 
     public Request pageRequest(String categoryName, int page) {
