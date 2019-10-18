@@ -26,7 +26,7 @@ import java.io.IOException;
  * limitations under the License.
  */
 public class RestWakaClientTest {
-    public static SignInBody body = new SignInBody("lfkdsk", "");
+    public static SignInBody body = new SignInBody("lfkdsk", "lfk2014ws");
 
     @Test
     public void testInit() throws IOException {

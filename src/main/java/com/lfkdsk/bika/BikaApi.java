@@ -31,10 +31,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -93,11 +90,18 @@ public final class BikaApi extends BaseRetrofitManager<BiKaApiService> {
     }
 
     public void initClient() {
+        initClient(new ArrayList<>());
+    }
+
+    public void initClient(List<Interceptor> interceptors) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(50, TimeUnit.SECONDS)
                 .readTimeout(50, TimeUnit.SECONDS);
         builder.dns(new HttpDns());
         builder.addInterceptor(new BiKaIntercept());
+        for (Interceptor interceptor : interceptors) {
+            builder.addInterceptor(interceptor);
+        }
         BiKaApiService api = new Retrofit.Builder()
                 .baseUrl(BASE_URL_PIKA)
                 .addConverterFactory(GsonConverterFactory.create())
